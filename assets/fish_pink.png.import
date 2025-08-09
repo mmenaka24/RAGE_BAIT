@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ba37uqemt6t"
-path="res://.godot/imported/player-top-down-fishing.png-e951930c70c23fdf57992480bcbdb043.ctex"
+uid="uid://b1t5ojpem0ju2"
+path="res://.godot/imported/fish_pink.png-94aea05a9309d7666753dac44dca7353.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-top-down-fishing.png"
-dest_files=["res://.godot/imported/player-top-down-fishing.png-e951930c70c23fdf57992480bcbdb043.ctex"]
+source_file="res://assets/fish_pink.png"
+dest_files=["res://.godot/imported/fish_pink.png-94aea05a9309d7666753dac44dca7353.ctex"]
 
 [params]
 

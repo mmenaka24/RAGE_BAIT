@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ba37uqemt6t"
-path="res://.godot/imported/player-top-down-fishing.png-e951930c70c23fdf57992480bcbdb043.ctex"
+uid="uid://c4h82nuheucwt"
+path="res://.godot/imported/fishing-rod.png-ebd595a5cedb40a84764317aea384f01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-top-down-fishing.png"
-dest_files=["res://.godot/imported/player-top-down-fishing.png-e951930c70c23fdf57992480bcbdb043.ctex"]
+source_file="res://assets/fishing-rod.png"
+dest_files=["res://.godot/imported/fishing-rod.png-ebd595a5cedb40a84764317aea384f01.ctex"]
 
 [params]
 
