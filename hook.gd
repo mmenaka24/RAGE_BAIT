@@ -1,0 +1,31 @@
+extends Area2D
+
+@export var speed: int = 100
+var lake_polygon: PackedVector2Array
+
+func _ready() -> void:
+	var lake_area: Area2D = get_tree().get_root().find_child("LakeArea", true, false)
+	var collision_poly: CollisionPolygon2D = lake_area.get_node("CollisionPolygon2D") as CollisionPolygon2D
+	
+	# Convert polygon points to global position
+	lake_polygon = PackedVector2Array()
+	for p: Vector2 in collision_poly.polygon:
+		lake_polygon.append(collision_poly.to_global(p))
+
+func _process(delta: float) -> void:
+	var direction: Vector2 = Vector2.ZERO
+	if Input.is_action_pressed("ui_up"):
+		direction.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		direction.y += 1
+	if Input.is_action_pressed("ui_left"):
+		direction.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		direction.x += 1
+		
+	if direction != Vector2.ZERO:
+		var new_position: Vector2 = global_position + direction.normalized() * speed * delta
+		
+		# Keep hook inside lake
+		if Geometry2D.is_point_in_polygon(new_position, lake_polygon):
+			global_position = new_position

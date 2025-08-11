@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://dxtckjgfhw3ot"]
+[gd_scene load_steps=13 format=4 uid="uid://dxtckjgfhw3ot"]
 
+[ext_resource type="Script" uid="uid://diopem363h3ph" path="res://fishing_controller.gd" id="1_6irkt"]
 [ext_resource type="Texture2D" uid="uid://ds4de0w6qsk8" path="res://assets/tilemap.png" id="1_q7bu0"]
 [ext_resource type="Texture2D" uid="uid://4ba37uqemt6t" path="res://assets/player-top-down-fishing.png" id="2_xfxro"]
 [ext_resource type="Texture2D" uid="uid://c4h82nuheucwt" path="res://assets/fishing-rod.png" id="3_7eert"]
+[ext_resource type="Script" uid="uid://b86e5y12q6in0" path="res://hook.gd" id="4_7eert"]
 [ext_resource type="Texture2D" uid="uid://b1t5ojpem0ju2" path="res://assets/fish_pink.png" id="4_c4l0p"]
+[ext_resource type="Script" uid="uid://8t4dsqv3h25i" path="res://fish.gd" id="6_c4l0p"]
+[ext_resource type="Texture2D" uid="uid://c7g7ah7vg0lup" path="res://assets/hook.png" id="6_vjxxc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ak53"]
 texture = ExtResource("1_q7bu0")
@@ -29,7 +33,14 @@ separation = Vector2i(1, 1)
 [sub_resource type="TileSet" id="TileSet_amhng"]
 sources/1 = SubResource("TileSetAtlasSource_2ak53")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjxxc"]
+radius = 4.12311
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdi7f"]
+size = Vector2(73.9231, 32.8571)
+
 [node name="FishingScene" type="Node2D"]
+script = ExtResource("1_6irkt")
 
 [node name="Background" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -51,18 +62,35 @@ scale = Vector2(0.235, 0.285)
 texture = ExtResource("3_7eert")
 
 [node name="Hook" type="Area2D" parent="Player"]
+script = ExtResource("4_7eert")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook"]
+position = Vector2(4, -17)
+shape = SubResource("CircleShape2D_vjxxc")
 
-[node name="Fish" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Hook"]
+position = Vector2(4, -17)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("6_vjxxc")
+
+[node name="Fish" type="Area2D" parent="."]
+script = ExtResource("6_c4l0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fish"]
 position = Vector2(-12, -10)
 scale = Vector2(0.203125, 0.21875)
 texture = ExtResource("4_c4l0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
+position = Vector2(-11.5078, -10.4063)
+scale = Vector2(0.203125, 0.21875)
+shape = SubResource("RectangleShape2D_cdi7f")
 
 [node name="CatchMeter" type="TextureProgressBar" parent="."]
 offset_left = 62.0
 offset_top = -39.0
 offset_right = 102.0
 offset_bottom = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
