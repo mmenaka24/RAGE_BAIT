@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int = 100
+@export var speed: int = 40
 var lake_polygon: PackedVector2Array
 
 func _ready() -> void:
@@ -27,5 +27,5 @@ func _process(delta: float) -> void:
 		var new_position: Vector2 = global_position + direction.normalized() * speed * delta
 		
 		# Keep hook inside lake
-		if Geometry2D.is_point_in_polygon(new_position, lake_polygon):
-			global_position = new_position
+		# if Geometry2D.is_point_in_polygon(new_position, lake_polygon):
+		global_position = new_position
