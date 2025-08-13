@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dxtckjgfhw3ot"]
+[gd_scene load_steps=14 format=4 uid="uid://dxtckjgfhw3ot"]
 
 [ext_resource type="Script" uid="uid://diopem363h3ph" path="res://fishing_controller.gd" id="1_6irkt"]
 [ext_resource type="Texture2D" uid="uid://ds4de0w6qsk8" path="res://assets/tilemap.png" id="1_q7bu0"]
@@ -57,23 +57,23 @@ zoom = Vector2(5, 5)
 polygon = PackedVector2Array(-9, -39, -9, -23, -41, -23, -41, -7, -56, -7, -56, 26, 57, 26, 57, -23, 41, -23, 41, -39)
 
 [node name="Player" type="Sprite2D" parent="."]
-position = Vector2(0, 27)
+position = Vector2(-5, 26)
 texture = ExtResource("2_xfxro")
 
 [node name="Rod" type="Sprite2D" parent="Player"]
-position = Vector2(4.25, -9.75)
-scale = Vector2(0.235, 0.285)
+position = Vector2(5, -14)
+scale = Vector2(0.235, 0.49)
 texture = ExtResource("3_7eert")
 
 [node name="Hook" type="Area2D" parent="Player"]
 script = ExtResource("4_7eert")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook"]
-position = Vector2(4, -17)
+position = Vector2(5, -24)
 shape = SubResource("CircleShape2D_vjxxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/Hook"]
-position = Vector2(4, -17)
+position = Vector2(5, -24)
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("6_vjxxc")
 
@@ -81,12 +81,12 @@ texture = ExtResource("6_vjxxc")
 script = ExtResource("6_c4l0p")
 
 [node name="Sprite2D" type="Sprite2D" parent="Fish"]
-position = Vector2(-12, -10)
+position = Vector2(-9.53674e-07, 0)
 scale = Vector2(0.203125, 0.21875)
 texture = ExtResource("4_c4l0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
-position = Vector2(-11.5078, -10.4063)
+position = Vector2(0, -9.53674e-07)
 scale = Vector2(0.203125, 0.21875)
 shape = SubResource("RectangleShape2D_cdi7f")
 
