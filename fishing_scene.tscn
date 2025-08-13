@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1t5ojpem0ju2" path="res://assets/fish_pink.png" id="4_c4l0p"]
 [ext_resource type="Script" uid="uid://8t4dsqv3h25i" path="res://fish.gd" id="6_c4l0p"]
 [ext_resource type="Texture2D" uid="uid://c7g7ah7vg0lup" path="res://assets/hook.png" id="6_vjxxc"]
+[ext_resource type="Theme" uid="uid://dvl5v4hvk0upo" path="res://ui_theme.tres" id="9_cdi7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ak53"]
 texture = ExtResource("1_q7bu0")
@@ -94,3 +95,20 @@ offset_left = 62.0
 offset_top = -39.0
 offset_right = 102.0
 offset_bottom = 1.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 40.0
+offset_top = -64.0
+offset_right = 80.0
+offset_bottom = -41.0
+theme = ExtResource("9_cdi7f")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -78.0
+offset_top = -63.0
+offset_right = -10.0
+offset_bottom = -40.0
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
