@@ -49,7 +49,7 @@ tile_map_data = PackedByteArray("AAD/////AQABAAIAAAD//wAAAQABAAIAAAAAAAAAAQABAAI
 tile_set = SubResource("TileSet_amhng")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(15, 15)
 
 [node name="LakeArea" type="Area2D" parent="."]
 
