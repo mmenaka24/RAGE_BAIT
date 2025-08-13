@@ -95,6 +95,7 @@ func _on_game_timeout() -> void:
 	hook.visible = false
 	fish.visible = false
 	print("Game Over! Score: ", score)
+	# move to next scene + pass score
 
 # collisions
 func _on_hook_area_entered(area: Area2D) -> void:

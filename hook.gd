@@ -42,3 +42,4 @@ func _process(delta: float) -> void:
 		randf_range(-wobble_amount, wobble_amount)
 	)
 	global_position = base_position + wobble_offset
+	# note to self: wobble has broken the hook position reset
