@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RAGE_BAIT"
-run/main_scene="uid://dxtckjgfhw3ot"
+run/main_scene="uid://dutn6jp75wh5k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

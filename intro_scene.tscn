@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dutn6jp75wh5k"]
+
+[ext_resource type="Script" uid="uid://b6e57y7e0ho66" path="res://intro_scene.gd" id="1_x3ncd"]
+[ext_resource type="Texture2D" uid="uid://b0rtlnm2gwxtf" path="res://intro_dialogue/01-text.png" id="2_x3ncd"]
+
+[node name="IntroScene" type="Node2D"]
+script = ExtResource("1_x3ncd")
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="ChatGuptie" type="Sprite2D" parent="."]
+
+[node name="DialogueBox" type="Sprite2D" parent="."]
+position = Vector2(868.563, 507.5)
+scale = Vector2(2.87666, 2.97929)
+texture = ExtResource("2_x3ncd")
+
+[node name="CentralMarker" type="Marker2D" parent="DialogueBox"]
+position = Vector2(374.892, 174.035)
+
+[node name="BottomScreenMarker" type="Marker2D" parent="DialogueBox"]
+position = Vector2(384.973, 398.249)

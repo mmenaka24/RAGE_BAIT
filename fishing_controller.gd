@@ -70,7 +70,6 @@ func _process(delta: float) -> void:
 		
 		if catch_meter.value >= catch_meter.max_value:
 			_on_fish_lost()
-	print(catch_meter.value)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and fish.visible and not fishing_started:
