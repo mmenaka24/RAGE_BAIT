@@ -82,19 +82,18 @@ width = 0.2
 default_color = Color(0.270222, 0.270222, 0.270222, 1)
 
 [node name="Hook" type="Area2D" parent="Player"]
+position = Vector2(5, -24)
 script = ExtResource("4_7eert")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook"]
-position = Vector2(5, -24)
 shape = SubResource("CircleShape2D_vjxxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/Hook"]
-position = Vector2(5, -24)
+position = Vector2(4.76837e-07, -1.90735e-06)
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("6_vjxxc")
 
 [node name="Marker2D" type="Marker2D" parent="Player/Hook"]
-position = Vector2(5, -24)
 
 [node name="Fish" type="Area2D" parent="."]
 script = ExtResource("6_c4l0p")
