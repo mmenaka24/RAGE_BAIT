@@ -11,6 +11,7 @@ var catch_meter_start_value: int = 100
 
 var catch_meter: TextureProgressBar
 var hook: Area2D
+var fishing_line: Line2D
 var fish: Area2D
 var timer_label: Label
 var score_label: Label
@@ -21,6 +22,7 @@ func _ready() -> void:
 	# node refs
 	catch_meter = $CatchMeter as TextureProgressBar
 	hook = $Player/Hook as Area2D
+	fishing_line = $Player/FishingLine as Line2D
 	fish = $Fish as Area2D
 	timer_label = $TimerLabel as Label
 	score_label = $ScoreLabel as Label
@@ -36,6 +38,7 @@ func _ready() -> void:
 	
 	# hide hook & fish initially
 	hook.visible = false
+	fishing_line.visible = false
 	fish.visible = false
 	
 	# signals
@@ -71,6 +74,11 @@ func _input(event: InputEvent) -> void:
 func _on_spawn_timeout() -> void:
 	# show fish, wait for player to press space
 	fish.set_speed()
+	if (randi_range(1, 20) == 1):
+		fish.set_flying_fish()
+	else:
+		fish.set_normal_fish()
+	fish.set_flying_fish() # remove
 	fish.visible = true
 	fishing_started = false
 	catch_meter.value = min(catch_meter_start_value, catch_meter.max_value)
@@ -80,12 +88,14 @@ func start_fishing() -> void:
 	fishing_started = true
 	hook.position = Vector2.ZERO
 	hook.visible = true
+	fishing_line.visible = true
 
 func _on_fish_caught() -> void:
 	score += 1
 	score_label.text = "Score: %d" %score
 	fishing_started = false
 	hook.visible = false
+	fishing_line.visible = false
 	fish.visible = false
 	spawn_timer.start(randf_range(0.5, 5.0)) # next fish delay
 

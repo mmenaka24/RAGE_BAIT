@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int = 40
+@export var speed: int = 30
 var lake_polygon: PackedVector2Array
 
 # wobble variables
@@ -30,16 +30,8 @@ func _process(delta: float) -> void:
 		direction.x += 1
 		
 	if direction != Vector2.ZERO:
-		base_position += direction.normalized() * speed * delta
+		var new_position: Vector2 = global_position + direction.normalized() * speed * delta
 		
 		# Keep hook inside lake
-		# if Geometry2D.is_point_in_polygon(new_position, lake_polygon):
-			# global_position = new_position
-	
-	# Wobble: add a small random offset around base_position
-	var wobble_offset: Vector2 = Vector2(
-		randf_range(-wobble_amount, wobble_amount),
-		randf_range(-wobble_amount, wobble_amount)
-	)
-	global_position = base_position + wobble_offset
-	# note to self: wobble has broken the hook position reset
+		if Geometry2D.is_point_in_polygon(new_position, lake_polygon):
+			global_position = new_position
