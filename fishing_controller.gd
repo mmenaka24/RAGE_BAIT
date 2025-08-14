@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 	# setup ui
 	catch_meter.min_value = 0
-	catch_meter.max_value = 140
+	catch_meter.max_value = 1000
 	catch_meter.value = catch_meter_start_value
 	timer_label.text = str(game_time)
 	score_label.text = "Score: 0"
@@ -67,7 +67,10 @@ func _process(delta: float) -> void:
 
 		if catch_meter.value <= 0:
 			_on_fish_caught()
-			# TODO: win animation or reset
+		
+		if catch_meter.value >= catch_meter.max_value:
+			_on_fish_lost()
+	print(catch_meter.value)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and fish.visible and not fishing_started:
@@ -97,6 +100,14 @@ func start_fishing() -> void:
 func _on_fish_caught() -> void:
 	score += 1
 	score_label.text = "Score: %d" %score
+	fishing_started = false
+	hook.visible = false
+	fishing_line.visible = false
+	fish.visible = false
+	spawn_timer.start(randf_range(0.5, 5.0)) # next fish delay
+
+func _on_fish_lost() -> void:
+	score_label.text = "That fish got away!"
 	fishing_started = false
 	hook.visible = false
 	fishing_line.visible = false
