@@ -1,13 +1,14 @@
 extends Node2D
 
 @export var reel_rate: int = 50    # how fast you pull fish in
-@export var lose_rate: int = 20    # how fast you lose progress
+@export var lose_rate: int = 30    # how fast you lose progress
 @export var game_time: int = 60    # the time limit in seconds
 
 var catching: bool = false
 var fishing_started: bool = false
 var score: int = 0
 var catch_meter_start_value: int = 100
+var hook_start_position: Vector2
 
 var catch_meter: TextureProgressBar
 var hook: Area2D
@@ -47,6 +48,9 @@ func _ready() -> void:
 	game_timer.connect("timeout", Callable(self, "_on_game_timeout"))
 	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timeout"))
 	
+	# store hook starting position
+	hook_start_position = hook.position
+	
 	# start game
 	score = 0
 	game_timer.start(game_time)
@@ -78,15 +82,15 @@ func _on_spawn_timeout() -> void:
 		fish.set_flying_fish()
 	else:
 		fish.set_normal_fish()
-	fish.set_flying_fish() # remove
 	fish.visible = true
 	fishing_started = false
 	catch_meter.value = min(catch_meter_start_value, catch_meter.max_value)
 	spawn_timer.start(game_time)
 
 func start_fishing() -> void:
+	score_label.text = "Score: %d" %score
 	fishing_started = true
-	hook.position = Vector2.ZERO
+	hook.position = hook_start_position
 	hook.visible = true
 	fishing_line.visible = true
 
