@@ -6,7 +6,6 @@ extends Node2D
 
 var catching: bool = false
 var fishing_started: bool = false
-var score: int = 0
 var catch_meter_start_value: int = 100
 var hook_start_position: Vector2
 
@@ -52,7 +51,7 @@ func _ready() -> void:
 	hook_start_position = hook.position
 	
 	# start game
-	score = 0
+	GameState.score = 0
 	game_timer.start(game_time)
 	spawn_timer.start(randf_range(0.5, 5.0)) # first fish spawn delay
 
@@ -90,15 +89,15 @@ func _on_spawn_timeout() -> void:
 	spawn_timer.start(game_time)
 
 func start_fishing() -> void:
-	score_label.text = "Score: %d" %score
+	score_label.text = "Score: %d" %GameState.score
 	fishing_started = true
 	hook.position = hook_start_position
 	hook.visible = true
 	fishing_line.visible = true
 
 func _on_fish_caught() -> void:
-	score += 1
-	score_label.text = "Score: %d" %score
+	GameState.score += 1
+	score_label.text = "Score: %d" %GameState.score
 	fishing_started = false
 	hook.visible = false
 	fishing_line.visible = false
@@ -118,7 +117,7 @@ func _on_game_timeout() -> void:
 	fishing_started = false
 	hook.visible = false
 	fish.visible = false
-	print("Game Over! Score: ", score)
+	get_tree().change_scene_to_file("res://you_won.tscn")
 	# move to next scene + pass score
 
 # collisions

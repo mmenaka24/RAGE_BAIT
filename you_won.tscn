@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqw1mf7qduo8"]
+
+[ext_resource type="Texture2D" uid="uid://biwowa12a1inq" path="res://assets/you_won.png" id="1_j5gld"]
+
+[node name="you_won" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2041, 1038)
+scale = Vector2(2.11979, 1.91852)
+texture = ExtResource("1_j5gld")
